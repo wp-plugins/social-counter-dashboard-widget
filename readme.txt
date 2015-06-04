@@ -3,7 +3,7 @@ Contributors: David Geresdi
 Donate link: http://www.davidgeresdi.com
 Tags: social,media,like,counter,dashoard,widget
 Requires at least: 3.0
-Tested up to: 3.8
+Tested up to: 4.2.2
 Stable tag: trunk
 
 This widget shows the count of Facebook, Twitter, Google Plus activities for your domain. 
@@ -21,6 +21,11 @@ This widget shows the number of Facebook likes, shares and comments, Twitter twe
 == Frequently Asked Questions ==
 
 == Changelog ==
+
+= 1.0 =
+* Tested on Wordpress 4.2.2.
+* Improvements to layout (icons).
+* Fixed issue with site's base url.
 
 = 0.4 =
 * First release.

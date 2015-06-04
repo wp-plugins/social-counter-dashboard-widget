@@ -2,7 +2,7 @@
 /*
 Plugin Name: Social Counter Dashboard Widget
 Description: This widget shows the count of Facebook, Twitter, Google Plus activities for your domain.
-Version: 0.4
+Version: 1.0
 Author: David Geresdi
 Author URI: http://www.davidgeresdi.com/
 License: GPL2
@@ -10,8 +10,8 @@ License: GPL2
 
 if( !class_exists( 'SocialCount_DashboardWidget') ) {
 	class SocialCount_DashboardWidget {
-		function socialcount_dashboard_widget() {
-				$siteurl = 'http://www.'.$_SERVER['HTTP_HOST'].'/';
+		function socialcount_dashboard_widget() {				
+				$siteurl = get_bloginfo('url');
 				
 				 function get_fb_likes($url)
 				 {
@@ -30,7 +30,6 @@ if( !class_exists( 'SocialCount_DashboardWidget') ) {
 				 
 					 $json_string = file_get_contents('http://urls.api.twitter.com/1/urls/count.json?url=' . $url);
 					 $json = json_decode($json_string, true);
-				 
 					 return intval( $json['count'] );
 				 }
 
@@ -51,27 +50,22 @@ if( !class_exists( 'SocialCount_DashboardWidget') ) {
 				 }
 
 				 $fb_likes = reset( get_fb_likes($siteurl) );
-
-				 //FOR FUTURE FUNCTIONS ONLY
-				 //echo 'CLICKS: '.$fb_likes->click_count.'<br />';
 				 
 				 print('
 				 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="33%" align="center" valign="top">							
-							 <strong><font color="blue">Activities on Facebook:</font><br /></strong>
-							 Total: '.$fb_likes->total_count.'<br />
-							 Likes: '.$fb_likes->like_count.'<br />
-							 Comments: '.$fb_likes->comment_count.'<br />
-							 Shares: '.$fb_likes->share_count.'	 
+							 <img src="'.plugin_dir_url( __FILE__ ).'/images/facebook.png" width="68" /><br />
+							 <strong>Likes:</strong> '.$fb_likes->like_count.'<br />							 
+							 <strong>Shares:</strong> '.$fb_likes->share_count.'	 
 						</td>
-						<td width="33%" align="center" valign="middle">
-							<strong><font color="red">Total number of tweets:</font><br /></strong>
-							'.get_tweets($siteurl).'
+						<td width="33%" align="center" valign="top">
+							<img src="'.plugin_dir_url( __FILE__ ).'/images/twitter.png" width="68" /><br />
+							<strong>Tweets:</strong><br />'.get_tweets($siteurl).'
 						</td>
-						<td width="33%" align="center" valign="middle">
-							 <strong><font color="green">Google +1 adds:</font></strong><br />
-						     '.get_plusones($siteurl).'
+						<td width="33%" align="center" valign="top">
+							 <img src="'.plugin_dir_url( __FILE__ ).'/images/gplus.png"  width="68" /><br />
+						     <strong>+1\'s:</strong><br />'.get_plusones($siteurl).'
 						</td>
 					</tr>
 				 </table>
@@ -80,7 +74,7 @@ if( !class_exists( 'SocialCount_DashboardWidget') ) {
 		}
 
 		function socialcount_add_dashboard_widget() {
-			wp_add_dashboard_widget( 'socialcount-admin-widget', 'Domain Social Activity Counter ('.$_SERVER['HTTP_HOST'].')', array( 'SocialCount_DashboardWidget', 'socialcount_dashboard_widget' ) );
+			wp_add_dashboard_widget( 'socialcount-admin-widget', 'Activity on Social Media Platforms for '.$_SERVER['HTTP_HOST'], array( 'SocialCount_DashboardWidget', 'socialcount_dashboard_widget' ) );
 		}		
 	}
 	add_action( 'wp_dashboard_setup', array( 'SocialCount_DashboardWidget', 'socialcount_add_dashboard_widget' ) );
