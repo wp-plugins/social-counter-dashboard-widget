@@ -55,16 +55,16 @@ if( !class_exists( 'SocialCount_DashboardWidget') ) {
 				 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="33%" align="center" valign="top">							
-							 <img src="'.plugin_dir_url( __FILE__ ).'/images/facebook.png" width="68" /><br />
+							 <img src="'.plugin_dir_url( __FILE__ ).'images/facebook.png" width="68" /><br />
 							 <strong>Likes:</strong> '.$fb_likes->like_count.'<br />							 
 							 <strong>Shares:</strong> '.$fb_likes->share_count.'	 
 						</td>
 						<td width="33%" align="center" valign="top">
-							<img src="'.plugin_dir_url( __FILE__ ).'/images/twitter.png" width="68" /><br />
+							<img src="'.plugin_dir_url( __FILE__ ).'images/twitter.png" width="68" /><br />
 							<strong>Tweets:</strong><br />'.get_tweets($siteurl).'
 						</td>
 						<td width="33%" align="center" valign="top">
-							 <img src="'.plugin_dir_url( __FILE__ ).'/images/gplus.png"  width="68" /><br />
+							 <img src="'.plugin_dir_url( __FILE__ ).'images/gplus.png"  width="68" /><br />
 						     <strong>+1\'s:</strong><br />'.get_plusones($siteurl).'
 						</td>
 					</tr>

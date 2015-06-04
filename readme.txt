@@ -22,6 +22,9 @@ This widget shows the number of Facebook likes, shares and comments, Twitter twe
 
 == Changelog ==
 
+= 1.0.1 =
+* Fixed icon URL issue.
+
 = 1.0 =
 * Tested on Wordpress 4.2.2.
 * Improvements to layout (icons).
